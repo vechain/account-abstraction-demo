@@ -1,97 +1,82 @@
-# Project <!-- Project Title -->
-
-<!-- Find and replace elements that start with '<!--' and remove this line -->
-
-![Project Logo](project-logo.png)
+# Account Abstraction Demo
 
 ## Introduction
 
-A brief description of your project, its purpose, and main features.
-
-This is a template repository, that allows you to quickly create new repos with the following templates:
-1. [README.md](README.md)
-2. [CONTRIBUTING.md](CONTRIBUTING.md)
-3. [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)
-4. [CODEOWNERS.md](CODEOWNERS.md)
-5. [LICENSE.md](LICENSE.md)
-
-Consider turning on branch protection for `main` as follows:
-1. Require a pull request before merging.
-  1. Require 1 approval.
-  2. Dismiss stale pull request approvals when new commits are pushed.
-  3. Require review from Code Owners.
-  4. Require approval of the most recent reviewable push.
-2. Require status checks to pass before merging.
-3. Require branches to be up to date before merging.
-4. Require conversation resolution before merging.
-5. Require deployments to succeed before merging.
-
-## Table of Contents
-
-- [Project ](#project-)
-  - [Introduction](#introduction)
-  - [Table of Contents](#table-of-contents)
-  - [Getting Started](#getting-started)
-    - [Prerequisites](#prerequisites)
-    - [Installation](#installation)
-    - [Configuration](#configuration)
-    - [Usage](#usage)
-    - [Documentation](#documentation)
-    - [Contributing](#contributing)
-    - [Roadmap](#roadmap)
-    - [Changelog](#changelog)
-    - [License](#license)
-    - [Credits](#credits)
+An end to end demo of account abstraction on the VechainThor blockchain.
 
 ## Getting Started
 
-### Prerequisites
+### Setup
+0. Initialize submodules `git submodule update --init --recursive`
+1. Clone latest [`thor`](https://github.com/vechain/thor) and run with flag  ` --api-allow-custom-tracer`
+2. Deploy Contracts
+    ```bash
+    cd account-abstraction
+    yarn install && yarn run hardhat test test/deploy-contracts.test.ts --network vechain
+    cd ..
+    ```
+    Sample output:
+    ```
+    Contract: Deployments
+      TestUtils address:                 0xC0a5459871aD8Ff4c9f5EeE7b41eE394ed415EB3
+      EntryPoint address:                0x1B433B67cE2CF743673a04268a088C8615413084
+      SimpleAccountFactory address:      0x29D17a4bdF64EeC4f05c27e9afA7556E4a9208ff
+      FakeSimpleAccountFactory address:  0xEf3d1eeD859f88215475C3d77F6503EEf7f8D985
+    ```
+3. Build `web3-providers-connex` with [`debug_traceCall`](./web3-providers-connex/src/provider.ts#L66) support
+    ```bash
+    cd web3-providers-connex
+    npm install && npm run build
+    cd ..
+    ```
+4. Build `hardhat-plugins` with [local web3-providers-connex dependency](./hardhat-plugins/packages/vechain/package.json#33)
+    ```bash
+    cd hardhat-plugins
+    yarn install && yarn build
+    cd ..
+    ```
+    **Note: When performing changes in `web3-providers-connex` you need to run `yarn updatupgrade web3-providers-connex`**
+5. Build `bundler` with [local hardhat-plugins dependency](./bundler/packages/bundler/package.json#54-55)
+    ```bash
+    cd bundler
+    yarn && yarn preprocess
+    ```
+    **Note: When performing changes in `web3-providers-connex` you need to `yarn upgrade @vechain/hardhat-vechain`**  
+6. Copy `EntryPoint address` value from [deployment output](./README.md#15) to [bundler/localconfig/bundler.config.json](./bundler/packages/bundler/localconfig/bundler.config.json#5)
+7. Run bundler
+    ```bash
+    yarn run bundler
+    ```
+    The bundler should now run in safe mode which supports `debug_traceCall`
 
-List the required software, libraries, or tools needed to use or contribute to the project.
+8. Change the config under `account-abstraction/test/config.ts` with your `EntryPoint` and `SimpleAccountFactory` addresses.
 
-### Installation
-
-Provide step-by-step instructions for installing the project, including any required dependencies.
+9. Run the funding script (make sure you change the account in the script to your SimpleAccount address, you can get that when running either Trampoline or Stackup)
 
 ```bash
-# Example installation commands
+cd account-abstraction
+yarn run hardhat test test/test_custom.ts --network vechain
+cd ..
 ```
 
-### Configuration
+### Using Stackup as client
 
-Explain how to configure the project, if necessary.
+1. Navigate to the stackup directory and follow the readme
 
-### Usage
+2. Start the server by running `yarn run server` on a separate terminal
 
-Include code examples or usage instructions to help users get started quickly.
+3. Navigate to the demo folder and run it on a separate terminal
 
-### Documentation
+```bash
+cd demo-eip-4337
+npm install
+npm start
+```
 
-Link to any additional documentation or tutorials, either within your repository or hosted externally.
+## Contributing
 
-### Contributing
+See [CONTRIBUTING](CONTRIBUTING.md) for further details on how to contribute.
 
-Explain how others can contribute to the project. Include information on:
+## License
 
-    How to submit bug reports or feature requests.
-    The process for submitting pull requests.
-    Any specific coding standards or guidelines.
-    The best way to get in touch with the maintainers, if needed.
-    
-You may use [a separate `CONTRIBUTING` file](CONTRIBUTING.md) to keep your `README.md` short.
-
-### Roadmap
-
-Share the project's development roadmap, if available, including planned features and improvements.
-
-### Changelog
-
-Keep a log of all notable changes and updates in the project.
-
-### License
-
-This project is licensed under <!-- update the license name --> [the LICENSE](LICENSE.md).
-
-### Credits
-
-Recognize any significant contributors, sponsors, or organizations that have supported the project.
+Distrubuted under the MIT license. See [LICENSE](LICENSE.md) for more information.
