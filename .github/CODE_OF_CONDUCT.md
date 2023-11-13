@@ -1,12 +1,10 @@
-# <!-- Your Project Name --> Code of Conduct
-
-<!-- Find and replace elements that start with '<!--' and remove this line -->
+# account-abstraction-demo Code of Conduct
 
 ## 1. Introduction
 
-The <!-- Your Project Name --> community is dedicated to providing a welcoming, inclusive, and harassment-free environment for everyone, regardless of age, gender, gender identity and expression, sexual orientation, disability, physical appearance, body size, race, ethnicity, nationality, religion, or technical experience. This Code of Conduct outlines our expectations for all members of the <!-- Your Project Name --> community, as well as the consequences for unacceptable behavior.
+The account-abstraction-demo community is dedicated to providing a welcoming, inclusive, and harassment-free environment for everyone, regardless of age, gender, gender identity and expression, sexual orientation, disability, physical appearance, body size, race, ethnicity, nationality, religion, or technical experience. This Code of Conduct outlines our expectations for all members of the account-abstraction-demo community, as well as the consequences for unacceptable behavior.
 
-We invite all those who participate in <!-- Your Project Name --> to help us create a safe and positive environment for everyone.
+We invite all those who participate in account-abstraction-demo to help us create a safe and positive environment for everyone.
 
 ## 2. Expected Behavior
 
@@ -53,9 +51,6 @@ We expect all community participants (contributors, paid or otherwise; sponsors;
 
 ## 8. Contact Information
 
-<!-- * Project maintainer: email@example.com -->
-<!-- * Community manager email@example.com -->
-<!-- * Main contributor email@example.com -->
 * Discord https://discord.com/invite/vechain #support
 * Support https://support.vechain.org
 
