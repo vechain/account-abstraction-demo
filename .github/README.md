@@ -8,7 +8,10 @@ An end to end demo of account abstraction on the VechainThor blockchain.
 
 ### Setup
 0. Initialize submodules `git submodule update --init --recursive`
-1. Clone latest [`thor`](https://github.com/vechain/thor) and run with flag  ` --api-allow-custom-tracer`
+1. Clone latest [`thor`](https://github.com/vechain/thor) and run it with flag  ` --api-allow-custom-tracer`:
+    ```bash
+    bin/thor solo --on-demand --api-allow-custom-tracer --data-dir /data/thor --api-addr 0.0.0.0:8669 --api-cors '*' --api-backtrace-limit -1 --verbosity 4
+    ```
 2. Deploy Contracts
     ```bash
     cd account-abstraction
@@ -35,21 +38,21 @@ An end to end demo of account abstraction on the VechainThor blockchain.
     yarn install && yarn build
     cd ..
     ```
-    **Note: When performing changes in `web3-providers-connex` you need to run `yarn upgrade web3-providers-connex`**
+
 5. Build `bundler` with [local hardhat-plugins dependency](./bundler/packages/bundler/package.json#54-55)
     ```bash
     cd bundler
     yarn && yarn preprocess
     ```
-    **Note: When performing changes in `web3-providers-connex` you need to `yarn upgrade @vechain/hardhat-vechain`**  
-6. Copy `EntryPoint address` value from [deployment output](./README.md#15) to [bundler/localconfig/bundler.config.json](./bundler/packages/bundler/localconfig/bundler.config.json#5)
+
+6. Copy `EntryPoint address` value from the deployment output at step 2 to [bundler/localconfig/bundler.config.json](./bundler/packages/bundler/localconfig/bundler.config.json#5)
 7. Run bundler
     ```bash
     yarn run bundler
     ```
     The bundler should now run in safe mode which supports `debug_traceCall`
 
-8. Change the config under `account-abstraction/test/config.ts` with your `EntryPoint` and `SimpleAccountFactory` addresses.
+8. Change the config under `account-abstraction/test/config.ts` with your `EntryPoint` and `SimpleAccountFactory` addresses that you got in step 2.
 
 9. Run the funding script (make sure you change the account in the script to your SimpleAccount address, you can get that when running either Trampoline or Stackup)
 
