@@ -35,7 +35,7 @@ An end to end demo of account abstraction on the VechainThor blockchain.
     yarn install && yarn build
     cd ..
     ```
-    **Note: When performing changes in `web3-providers-connex` you need to run `yarn updatupgrade web3-providers-connex`**
+    **Note: When performing changes in `web3-providers-connex` you need to run `yarn upgrade web3-providers-connex`**
 5. Build `bundler` with [local hardhat-plugins dependency](./bundler/packages/bundler/package.json#54-55)
     ```bash
     cd bundler
