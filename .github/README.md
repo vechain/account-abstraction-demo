@@ -64,6 +64,8 @@ cd ..
 
 ### Using Stackup as client
 
+**DISCLAIMER**: Contracts should be deployed and Bundler up and running beforehand (see previous section).
+
 1. Navigate to the stackup directory and follow the readme
 
 2. Start the server by running `yarn run server` on a separate terminal
