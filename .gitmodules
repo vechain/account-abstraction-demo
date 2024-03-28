@@ -10,3 +10,6 @@
 [submodule "web3-providers-connex"]
 	path = web3-providers-connex
 	url = git@github.com:vechain/web3-providers-connex.git
+[submodule "hardhat-plugins"]
+	path = hardhat-plugins
+	url = git@github.com:vechain/hardhat-plugins.git
