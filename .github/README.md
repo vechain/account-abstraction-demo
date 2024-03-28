@@ -26,26 +26,26 @@ An end to end demo of account abstraction on the VechainThor blockchain.
       SimpleAccountFactory address:      0x29D17a4bdF64EeC4f05c27e9afA7556E4a9208ff
       FakeSimpleAccountFactory address:  0xEf3d1eeD859f88215475C3d77F6503EEf7f8D985
     ```
-3. Build `web3-providers-connex` with [`debug_traceCall`](./web3-providers-connex/src/provider.ts#L66) support
+3. Build `web3-providers-connex` with [`debug_traceCall`](../web3-providers-connex/src/provider.ts#L66) support
     ```bash
     cd web3-providers-connex
     npm install && npm run build
     cd ..
     ```
-4. Build `hardhat-plugins` with [local web3-providers-connex dependency](./hardhat-plugins/packages/vechain/package.json#33)
+4. Build `hardhat-plugins` with [local web3-providers-connex dependency](../hardhat-plugins/packages/vechain/package.json#33)
     ```bash
     cd hardhat-plugins
     yarn install && yarn build
     cd ..
     ```
 
-5. Build `bundler` with [local hardhat-plugins dependency](./bundler/packages/bundler/package.json#54-55)
+5. Build `bundler` with [local hardhat-plugins dependency](../bundler/packages/bundler/package.json#54-55)
     ```bash
     cd bundler
     yarn && yarn preprocess
     ```
 
-6. Copy `EntryPoint address` value from the deployment output at step 2 to [bundler/localconfig/bundler.config.json](./bundler/packages/bundler/localconfig/bundler.config.json#5)
+6. Copy `EntryPoint address` value from the deployment output at step 2 to [bundler/localconfig/bundler.config.json](../bundler/packages/bundler/localconfig/bundler.config.json#5)
 7. Run bundler
     ```bash
     yarn run bundler
