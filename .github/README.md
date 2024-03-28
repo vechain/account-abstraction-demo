@@ -12,7 +12,7 @@ An end to end demo of account abstraction on the VechainThor blockchain.
 2. Deploy Contracts
     ```bash
     cd account-abstraction
-    yarn install && yarn run hardhat test test/deploy-contracts.test.ts --network vechain
+    yarn --ignore-engines && yarn run hardhat test test/deploy-contracts.test.ts --network vechain
     cd ..
     ```
     Sample output:

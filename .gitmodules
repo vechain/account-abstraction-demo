@@ -7,3 +7,6 @@
 [submodule "bundler"]
 	path = bundler
 	url = git@github.com:vechainfoundation/4337-bundler.git
+[submodule "web3-providers-connex"]
+	path = web3-providers-connex
+	url = git@github.com:vechain/web3-providers-connex.git
