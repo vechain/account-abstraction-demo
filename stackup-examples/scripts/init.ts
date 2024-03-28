@@ -5,7 +5,7 @@ import { ethers } from "ethers";
 
 const INIT_CONFIG = {
   rpcUrl: "https://api.stackup.sh/v1/node/API_KEY",
-  signingKey: new ethers.Wallet(ethers.utils.randomBytes(32)).privateKey,
+  signingKey: new ethers.Wallet(ethers.hexlify(ethers.randomBytes(32))).privateKey,
   paymaster: {
     rpcUrl: "https://api.stackup.sh/v1/paymaster/API_KEY",
     context: {},
