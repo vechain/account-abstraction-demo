@@ -10,6 +10,7 @@ export default async function main(opts: CLIOpts) {
     config.entryPoint,
     config.factory
   );
+  
   const client = await VechainClient.init(
     config.entryPoint,
     config.overideBundlerUrl
