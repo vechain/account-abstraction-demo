@@ -1,6 +1,3 @@
-import { BigNumberish, ethers } from "ethers";
-import { Client, IUserOperation, Presets, UserOperationMiddlewareFn, } from "userop";
-import { UserOperationBuilder } from 'userop';
 import { CLIOpts } from "../../src";
 // @ts-ignore
 import config from "../../config.json";
@@ -13,13 +10,14 @@ export default async function main(opts: CLIOpts) {
     config.entryPoint,
     config.factory
   );
+  
   const client = await VechainClient.init(
     config.entryPoint,
     config.overideBundlerUrl
   );
 
   // Create a no-op transaction for deployment purposes
-  let builder = simpleAccount.execute(simpleAccount.getSender(), 0, "0x");
+  const builder = simpleAccount.execute(simpleAccount.getSender(), 0, "0x");
   builder.setCallGasLimit(123456);
   builder.setVerificationGasLimit(123456);
   builder.setPreVerificationGas(123456);
