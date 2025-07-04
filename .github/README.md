@@ -2,7 +2,7 @@
 
 ## Introduction
 
-An end to end demo of account abstraction on the VechainThor blockchain.
+An end to end demo of account abstraction on the VechainThor blockchain. 
 
 ## Getting Started
 
